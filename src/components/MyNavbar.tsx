@@ -1,11 +1,14 @@
 import { useContext } from "react"
-import TodoContext from "../contexts/todoContext"
-import Login from "./Login";
+import TodoContext from "../state-management/Todos/todoContext"
+import Login from "../state-management/Auth/Login";
+import userCounterStore from "../state-management/Counter/store";
 
 
 const MyNavbar = () => {
 
   const {todos} = useContext(TodoContext);
+  // const {max}= userCounterStore();
+  const counter = userCounterStore(s => s.counter)
 
   return (
    <>
@@ -27,7 +30,12 @@ const MyNavbar = () => {
           <a className="nav-link" href="#">Pricing</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link disabled" aria-disabled="true"><span>{todos.length}</span></a>
+          <a className="nav-link disabled" aria-disabled="true">
+            counter:<span>
+              {counter}</span></a>
+            {/* max:<span>
+               {max} </span> */}
+            
         </li>
       </ul>
     </div>
