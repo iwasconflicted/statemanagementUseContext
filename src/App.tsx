@@ -1,18 +1,11 @@
 import { useReducer } from "react"
 import HomePage from "./components/HomePage"
 import MyNavbar from "./components/MyNavbar"
-import todoReducer from "./reducers/TodoReducer"
-import TodoContext from "./contexts/todoContext"
-import authReducer from "./reducers/authReducer"
-import LoginContext from "./contexts/loginContext"
+import AuthProvider from "./AuthProvider"
+import TodoProvider from "./TodoProvider"
 
 
 const App = () => {
-
-  const [user, loginDispatch] = useReducer(authReducer, '')
-
-  const [todos,dispatch] = useReducer(todoReducer,[])
-
 
 
   return (
@@ -23,13 +16,17 @@ const App = () => {
 {/* <Todo/> */}
 {/* <Login/> */}
 
-<TodoContext.Provider value={{ todos, dispatch: dispatch }}>
-        <LoginContext.Provider value={{ user, dispatch: loginDispatch }}>
+<AuthProvider>
+    <TodoProvider>
+        
           <MyNavbar />
           <HomePage />
-        </LoginContext.Provider>
-      </TodoContext.Provider>
 
+      </TodoProvider>
+    
+</AuthProvider>
+
+  
   </>
   )
 }

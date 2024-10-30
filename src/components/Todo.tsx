@@ -1,6 +1,7 @@
 import { useContext} from "react"
 import TodoContext from "../contexts/todoContext";
-import LoginContext from "../contexts/loginContext";
+import useAuth from "../hooks/useAuth";
+import useTodos from "../hooks/useTodos";
 
 interface Todo {
     id: number;
@@ -11,9 +12,11 @@ const Todo = () => {
     // const [todos, setTodos] = useState<Todo[]>([]);
     
 
-    const {todos, dispatch} = useContext(TodoContext)
-    const {user,dispatch:loginDispatch} = useContext(LoginContext);
+    // const {todos, dispatch} = useContext(TodoContext)
+    // const {user} = useContext(LoginContext);
 
+    const {user} = useAuth()
+    const {todos, dispatch} = useTodos()
 
     const generateRandomNumber = ():number => {
         return Date.now()

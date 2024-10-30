@@ -2,6 +2,8 @@ import { Dispatch } from "react";
 import { AuthAction } from "../reducers/authReducer";
 import React from "react";
 
+
+
 interface LoginContextType{
     user:string;
     dispatch:Dispatch<AuthAction>

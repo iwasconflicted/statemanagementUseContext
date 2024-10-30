@@ -32,7 +32,10 @@ const MyNavbar = () => {
       </ul>
     </div>
 
-    <Login/>
+      <div className="">
+         <Login/>
+      </div>
+   
 
   </div>
 </nav>
